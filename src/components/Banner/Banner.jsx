@@ -22,7 +22,9 @@ const Banner = () => {
               <br />{" "}
               <span className="text-[#800080]">Explore our To-Do Website!</span>
             </p>
-            {!user && <button className="btn btn-primary">Get Started</button>}
+            {!user && (
+              <button className="btn btn-primary">Let`s Explore</button>
+            )}
           </div>
         </div>
       </div>

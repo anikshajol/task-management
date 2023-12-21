@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { AuthContext } from "../Providers/AuthProviders";
 import useAuth from "../hooks/useAuth";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Registration = () => {
   const [email, setEmail] = useState("");
@@ -62,12 +61,20 @@ const Registration = () => {
                   </a>
                 </label>
               </div>
-              <div className="form-control mt-6">
+              <div className="form-control">
                 <button type="submit" className="btn btn-primary">
                   Register
                 </button>
               </div>
             </form>
+            <div>
+              <p className="text-center pb-2 px-2">
+                Already Registered? Please
+                <Link to="/login" className="text-blue-600">
+                  Login
+                </Link>
+              </p>
+            </div>
           </div>
         </div>
       </div>

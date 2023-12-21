@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { AuthContext } from "../Providers/AuthProviders";
+
 import useAuth from "../hooks/useAuth";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
 const Login = () => {
@@ -66,12 +66,20 @@ const Login = () => {
                   </a>
                 </label>
               </div>
-              <div className="form-control mt-6">
+              <div className="form-control ">
                 <button type="submit" className="btn btn-primary">
                   Login
                 </button>
               </div>
             </form>
+            <div>
+              <p className="text-center pb-2 px-2">
+                Not Registered? Please
+                <Link to="/register" className="text-blue-600">
+                  Register
+                </Link>
+              </p>
+            </div>
           </div>
         </div>
       </div>
