@@ -19,7 +19,7 @@ const MainLayout = ({ children }) => {
   const navLinks = (
     <>
       <NavLink to="/"> Home </NavLink>
-      <NavLink to="/dashboard"> Dashboard </NavLink>
+      {user && <NavLink to="/dashboard"> Dashboard </NavLink>}
       <NavLink to="/about"> About </NavLink>
 
       <NavLink to="/contact"> Contact </NavLink>

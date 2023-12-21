@@ -8,6 +8,8 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { login, user } = useAuth();
+  // const [error, setError] = useState();
+  const [loading, setLoading] = useState(false);
 
   console.log(user);
   const navigate = useNavigate();
@@ -23,7 +25,10 @@ const Login = () => {
       toast.success("Logged in....", { id: toastID });
       navigate("/");
     } catch (error) {
-      console.log(error.message, { id: toastID });
+      toast.dismiss(toastID);
+      toast.error(error.message, { id: toastID });
+    } finally {
+      setLoading(false);
     }
 
     console.log(email, password);
@@ -68,7 +73,7 @@ const Login = () => {
               </div>
               <div className="form-control ">
                 <button type="submit" className="btn btn-primary">
-                  Login
+                  {loading ? "Logging in..." : "Login"}
                 </button>
               </div>
             </form>

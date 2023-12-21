@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "Design wireframes",
+    "description": "Create wireframes for the new website",
+    "due_date": "2023-01-15",
+    "priority": "high",
+    "status": "incomplete"
+  },
+  {
+    "id": 2,
+    "title": "Develop homepage",
+    "description": "Code the homepage of the website",
+    "due_date": "2023-02-01",
+    "priority": "medium",
+    "status": "incomplete"
+  },
+  {
+    "id": 3,
+    "title": "Test website",
+    "description": "Perform testing on all functionalities",
+    "due_date": "2023-02-15",
+    "priority": "low",
+    "status": "complete"
+  }
+]

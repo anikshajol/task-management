@@ -1,7 +1,6 @@
-import useAuth from "../../hooks/useAuth";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
-  const { user } = useAuth();
   return (
     <div className="">
       <div
@@ -22,9 +21,9 @@ const Banner = () => {
               <br />{" "}
               <span className="text-[#800080]">Explore our To-Do Website!</span>
             </p>
-            {!user && (
+            <Link className="" to="/login">
               <button className="btn btn-primary">Let`s Explore</button>
-            )}
+            </Link>
           </div>
         </div>
       </div>
