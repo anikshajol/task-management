@@ -3,12 +3,12 @@ import App from "../App";
 import About from "../pages/About";
 import Contact from "../pages/Contact";
 import Login from "../pages/Login";
-import AdminLayout from "../components/layouts/AdminLayout";
-import AddService from "../pages/AddService";
 import Home from "../pages/Home";
 import Registration from "../pages/Registration";
 import PrivateRoute from "./PrivateRoute";
-import Dashboard from "../pages/Dashboard";
+import Dashboard from "../pages/Dashboard/Dashboard";
+import Task from "../pages/Dashboard/task";
+import DashboardHome from "../pages/Dashboard/DashboardHome";
 
 const routes = createBrowserRouter([
   {
@@ -28,14 +28,14 @@ const routes = createBrowserRouter([
           </PrivateRoute>
         ),
       },
-      {
-        path: "dashboard",
-        element: (
-          <PrivateRoute>
-            <Dashboard></Dashboard>
-          </PrivateRoute>
-        ),
-      },
+      // {
+      //   path: "dashboard",
+      //   element: (
+      //     <PrivateRoute>
+      //       <Dashboard></Dashboard>
+      //     </PrivateRoute>
+      //   ),
+      // },
       {
         path: "contact",
         element: <Contact></Contact>,
@@ -51,12 +51,17 @@ const routes = createBrowserRouter([
     element: <Registration></Registration>,
   },
   {
-    path: "/admin",
-    element: <AdminLayout></AdminLayout>,
+    path: "/dashboard",
+    element: <Dashboard></Dashboard>,
     children: [
       {
-        path: "addService",
-        element: <AddService></AddService>,
+        path: "dashboardHome",
+        index: true,
+        element: <DashboardHome></DashboardHome>,
+      },
+      {
+        path: "task",
+        element: <Task></Task>,
       },
     ],
   },
