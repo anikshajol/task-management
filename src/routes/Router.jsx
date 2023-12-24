@@ -7,8 +7,9 @@ import Home from "../pages/Home";
 import Registration from "../pages/Registration";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../pages/Dashboard/Dashboard";
-import Task from "../pages/Dashboard/task";
+
 import DashboardHome from "../pages/Dashboard/DashboardHome";
+import CompletedList from "../components/todo/CompleteList";
 
 const routes = createBrowserRouter([
   {
@@ -56,12 +57,13 @@ const routes = createBrowserRouter([
     children: [
       {
         index: true,
-        // path: "dashboardHome",
+        path: "dashboardHome",
         element: <DashboardHome></DashboardHome>,
       },
+
       {
-        path: "task",
-        element: <Task></Task>,
+        path: "task/complete",
+        element: <CompletedList></CompletedList>,
       },
     ],
   },

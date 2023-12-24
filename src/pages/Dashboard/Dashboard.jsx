@@ -16,13 +16,13 @@ const Dashboard = () => {
             <li>
               <NavLink to={`/dashboard/dashboardHome`}>
                 <FaHouse></FaHouse>
-                Home
+                Task Home
               </NavLink>
             </li>
             <li>
-              <NavLink to={"/dashboard/task"}>
+              <NavLink to={"/dashboard/task/complete"}>
                 <FcTodoList></FcTodoList>
-                To-do list
+                Previous Todo
               </NavLink>
             </li>
           </>

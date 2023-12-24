@@ -1,9 +1,10 @@
 import { useEffect } from "react";
-import useTodo from "../../hooks/useTodo";
-import Moda from "../modal/Moda";
 
-const TodoList = () => {
-  const [todos, refetch] = useTodo();
+import Moda from "../modal/Moda";
+import useOnGoing from "../../hooks/useOnGoing";
+
+const OnGoingList = () => {
+  const [onGoing, refetch] = useOnGoing();
   useEffect(() => {
     refetch();
   }, [refetch]);
@@ -11,7 +12,7 @@ const TodoList = () => {
   return (
     <div>
       <div className="my-4">
-        {todos.map((todo) => (
+        {onGoing.map((todo) => (
           <div key={todo._id} className="mb-4">
             <div className="form-control">
               <button
@@ -30,4 +31,4 @@ const TodoList = () => {
   );
 };
 
-export default TodoList;
+export default OnGoingList;

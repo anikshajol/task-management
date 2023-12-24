@@ -1,0 +1,23 @@
+import { useQuery } from "@tanstack/react-query";
+import useAxios from "./useAxios";
+
+const useTodoOnly = () => {
+  const axiosPublic = useAxios();
+
+  const { data: todoOnly = [], refetch } = useQuery({
+    queryKey: ["todoOnly"],
+    queryFn: async () => {
+      try {
+        const response = await axiosPublic.get("/api/v1/todo-list/todo");
+        return response.data;
+      } catch (error) {
+        console.error(error);
+        throw error;
+      }
+    },
+  });
+
+  return [todoOnly, refetch];
+};
+
+export default useTodoOnly;

@@ -1,9 +1,11 @@
 import { useEffect } from "react";
-import useTodo from "../../hooks/useTodo";
+
 import Moda from "../modal/Moda";
 
-const TodoList = () => {
-  const [todos, refetch] = useTodo();
+import useCompletedList from "../../hooks/useCompletedList";
+
+const CompletedList = () => {
+  const [complete, refetch] = useCompletedList();
   useEffect(() => {
     refetch();
   }, [refetch]);
@@ -11,7 +13,7 @@ const TodoList = () => {
   return (
     <div>
       <div className="my-4">
-        {todos.map((todo) => (
+        {complete.map((todo) => (
           <div key={todo._id} className="mb-4">
             <div className="form-control">
               <button
@@ -30,4 +32,4 @@ const TodoList = () => {
   );
 };
 
-export default TodoList;
+export default CompletedList;

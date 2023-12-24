@@ -3,10 +3,11 @@ import { useForm, Controller } from "react-hook-form";
 import Task from "./task";
 import useAxios from "../../hooks/useAxios";
 import toast from "react-hot-toast";
+import useTodo from "../../hooks/useTodo";
 
 const DashboardHome = () => {
   const [taskOpen, setTaskOpen] = useState(false);
-
+  const [, refetch] = useTodo();
   // const [task, setTask] = useState([]);
 
   const handleOpenTaskForm = () => {
@@ -34,6 +35,7 @@ const DashboardHome = () => {
     if (res.data.insertedId) {
       toast.success("Todo created");
     }
+    refetch();
 
     reset();
   };

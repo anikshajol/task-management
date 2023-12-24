@@ -1,19 +1,25 @@
 import { useForm } from "react-hook-form";
 import useAxios from "../../hooks/useAxios";
 import useTodo from "../../hooks/useTodo";
+import { useEffect } from "react";
 
 /* eslint-disable react/prop-types */
 const Moda = ({ todo }) => {
   const [, refetch] = useTodo();
   const axiosPublic = useAxios();
-  const { register, handleSubmit, watch } = useForm();
+  const { register, handleSubmit } = useForm();
+
+  useEffect(() => {
+    refetch();
+  }, [refetch]);
 
   // Watch the values of the checkboxes
-  const checkedValues = watch(["complete", "ongoing"]);
+  //   const checkedValues = watch(["complete", "ongoing"]);
 
-  const onSubmit = async () => {
+  const onSubmit = async (data) => {
     try {
-      const status = checkedValues.complete ? "completed" : "ongoing";
+      console.log(data);
+      const status = data.complete ? "complete" : "ongoing";
 
       console.log(status);
 
