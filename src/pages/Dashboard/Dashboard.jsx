@@ -1,12 +1,7 @@
 import { NavLink, Outlet } from "react-router-dom";
-import {
-  FaCalendar,
-  FaCalendarCheck,
-  FaCartShopping,
-  FaHouse,
-  FaStreetView,
-} from "react-icons/fa6";
-import { GiHamburgerMenu } from "react-icons/gi";
+import { FaHouse } from "react-icons/fa6";
+import { FcTodoList } from "react-icons/fc";
+
 import { MdEmail } from "react-icons/md";
 
 import "./Nav.css";
@@ -26,25 +21,8 @@ const Dashboard = () => {
             </li>
             <li>
               <NavLink to={"/dashboard/task"}>
-                <FaCalendar></FaCalendar>
-                My Task
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to={"/dashboard/cart"}>
-                <FaCartShopping></FaCartShopping>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to={"/dashboard/review"}>
-                <FaStreetView></FaStreetView>
-                Add Review
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to={"/dashboard/bookings"}>
-                <FaCalendarCheck></FaCalendarCheck>
-                My bookings
+                <FcTodoList></FcTodoList>
+                To-do list
               </NavLink>
             </li>
           </>
@@ -58,12 +36,7 @@ const Dashboard = () => {
               Home
             </NavLink>
           </li>
-          <li>
-            <NavLink to={"/order/Salad"}>
-              <GiHamburgerMenu />
-              Menu
-            </NavLink>
-          </li>
+
           <li>
             <NavLink to={"/dashboard/contact"}>
               <MdEmail />

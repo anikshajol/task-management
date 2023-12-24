@@ -1,31 +1,45 @@
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
+import Task from "./task";
+import useAxios from "../../hooks/useAxios";
+import toast from "react-hot-toast";
 
 const DashboardHome = () => {
   const [taskOpen, setTaskOpen] = useState(false);
+
+  // const [task, setTask] = useState([]);
+
   const handleOpenTaskForm = () => {
     setTaskOpen(!taskOpen);
   };
   //   const [value, onChange] = useState(null)(new Date());
+
+  const axiosPublic = useAxios();
 
   const {
     register,
     handleSubmit,
     // watch,
     // formState: { errors },
+    control,
     reset,
   } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log(data);
+
+    const res = await axiosPublic.post("/api/v1/create-todo", data);
+
+    console.log(res.data);
+    if (res.data.insertedId) {
+      toast.success("Todo created");
+    }
 
     reset();
   };
 
   return (
     <div>
-      <h2>dash</h2>
-
       <div>
         <button onClick={handleOpenTaskForm}>
           {!taskOpen ? "+" : "-"} Add Task
@@ -33,8 +47,12 @@ const DashboardHome = () => {
 
         <div>
           {taskOpen && (
-            <form action="" onSubmit={handleSubmit(onSubmit)}>
-              <div className="form-control">
+            <form
+              className="border border-[#80008015] rounded-md mb-5 p-3"
+              action=""
+              onSubmit={handleSubmit(onSubmit)}
+            >
+              <div className="form-control space-y-2">
                 <input
                   type="text"
                   placeholder="Task Name"
@@ -47,8 +65,8 @@ const DashboardHome = () => {
                 <textarea
                   name="description"
                   id=""
-                  cols="20"
-                  rows="10"
+                  cols="10"
+                  rows="5"
                   {...register("description", { required: true })}
                   className="border outline-none px-4"
                   placeholder="Description"
@@ -72,6 +90,27 @@ const DashboardHome = () => {
                       id=""
                     />
                   </div>
+                  <div>
+                    <Controller
+                      name="priority"
+                      control={control}
+                      defaultValue=""
+                      rules={{ required: true }}
+                      render={({ field }) => (
+                        <select
+                          className="select select-bordered w-full max-w-xs"
+                          {...field}
+                        >
+                          <option disabled value="">
+                            Priority Status
+                          </option>
+                          <option value="High">High</option>
+                          <option value="Moderate">Moderate</option>
+                          <option value="Low">Low</option>
+                        </select>
+                      )}
+                    />
+                  </div>
                 </div>
 
                 <input
@@ -82,6 +121,8 @@ const DashboardHome = () => {
               </div>
             </form>
           )}
+
+          <Task></Task>
         </div>
       </div>
     </div>
